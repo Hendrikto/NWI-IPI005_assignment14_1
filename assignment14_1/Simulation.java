@@ -28,8 +28,11 @@ public class Simulation {
         station = new Station();
         taxis = new Taxi[NROFTAXIS];
         for (int i = 0; i < NROFTAXIS; i++) {
-            taxis[i] = i < NROFSMALLTAXIS ? new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station) : new Taxi(i + 1,
-                    CAPACITYLARGE, TIMELARGE, station);
+            if (i < NROFSMALLTAXIS) {
+                taxis[i] = new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station);
+            } else {
+                taxis[i] = new Taxi(i + 1, CAPACITYLARGE, TIMELARGE, station);
+            }
         }
         train = new Train(station);
     }
