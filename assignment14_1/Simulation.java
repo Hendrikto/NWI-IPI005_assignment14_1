@@ -1,5 +1,8 @@
 package assignment14_1;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 /**
  *
  * @author Hendrik Werner // s4549775
@@ -20,6 +23,7 @@ public class Simulation {
     private final Taxi[] taxis;
     private final Train train;
     private final Station station;
+    private final ThreadPoolExecutor executor;
 
     private boolean hasEnded = false;
     private int nextTaxi = 0;
@@ -35,6 +39,7 @@ public class Simulation {
             }
         }
         train = new Train(station);
+        executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     }
 
     public void step() {
@@ -46,6 +51,7 @@ public class Simulation {
             train.getOff();
         } else {
             train.closeStation();
+            executor.shutdown();
             hasEnded = true;
         }
     }
