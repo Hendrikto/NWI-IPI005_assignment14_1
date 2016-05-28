@@ -25,17 +25,20 @@ public class Station {
         System.out.println("Train with " + nrOfPassengers + " passengers has arrived");
     }
 
-    /**
-     * Ask for nrOfPassengers Passengers to leave the station.
-     *
-     * @param nrOfPassengers the number of passengers
-     */
-    public synchronized void leaveStation(int nrOfPassengers) {
-        nrOfPassengersAtStation -= nrOfPassengers;
-    }
-
     public synchronized int getNrOfPassengersWaiting() {
         return nrOfPassengersAtStation;
+    }
+
+    /**
+     * Ask for as many Passengers as possible to leave the station.
+     *
+     * @param capacity the capacity of the taxi
+     * @return the number of passengers
+     */
+    public synchronized int getMaxPassengers(int capacity) {
+        int maxPassengers = Math.min(nrOfPassengersAtStation, capacity);
+        nrOfPassengersAtStation -= maxPassengers;
+        return maxPassengers;
     }
 
     public void close() {
