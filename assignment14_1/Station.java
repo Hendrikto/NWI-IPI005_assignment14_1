@@ -30,11 +30,11 @@ public class Station {
      *
      * @param nrOfPassengers the number of passengers
      */
-    public void leaveStation(int nrOfPassengers) {
+    public synchronized void leaveStation(int nrOfPassengers) {
         nrOfPassengersAtStation -= nrOfPassengers;
     }
 
-    public int getNrOfPassengersWaiting() {
+    public synchronized int getNrOfPassengersWaiting() {
         return nrOfPassengersAtStation;
     }
 
