@@ -14,7 +14,7 @@ public class TaxiRunner implements Runnable {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        taxi.takePassengers();
     }
 
 }
