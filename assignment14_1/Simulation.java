@@ -44,7 +44,7 @@ public class Simulation {
 
     public void step() {
         if (station.getNrOfPassengersWaiting() > 0) {
-            taxis[nextTaxi].takePassengers();
+            executor.submit(new TaxiRunner(taxis[nextTaxi]));
             nextTaxi = (nextTaxi + 1) % NROFTAXIS;
         } else if (train.getNrOfTrips() < TRAIN_TRIPS) {
             train.getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
