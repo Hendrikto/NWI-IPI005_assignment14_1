@@ -3,8 +3,10 @@ package assignment14_1;
 import java.util.Random;
 
 /**
+ * A class to provide useful utilities.
  *
  * @author Hendrik Werner // s4549775
+ * @author Jasper Haasdijk // s4449754
  * @author Sjaak Smetsers
  */
 public class Util {
