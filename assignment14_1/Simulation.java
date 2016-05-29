@@ -2,6 +2,9 @@ package assignment14_1;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,8 +53,13 @@ public class Simulation {
             train.getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
             train.getOff();
         } else {
-            train.closeStation();
             executor.shutdown();
+            try {
+                executor.awaitTermination(1, TimeUnit.MINUTES);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Simulation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            train.closeStation();
             hasEnded = true;
         }
     }
