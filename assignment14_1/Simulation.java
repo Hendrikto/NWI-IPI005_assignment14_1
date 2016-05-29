@@ -1,7 +1,7 @@
 package assignment14_1;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Simulation {
     private final Taxi[] taxis;
     private final Train train;
     private final Station station;
-    private final ThreadPoolExecutor executor;
+    private final ExecutorService executor;
 
     private boolean hasEnded = false;
     private int nextTaxi = 0;
@@ -39,7 +39,7 @@ public class Simulation {
             }
         }
         train = new Train(station);
-        executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+        executor = Executors.newCachedThreadPool();
     }
 
     public void step() {
