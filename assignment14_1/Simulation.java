@@ -1,5 +1,7 @@
 package assignment14_1;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Hendrik Werner // s4549775
@@ -68,11 +70,9 @@ public class Simulation {
      * @return total time
      */
     private static int calcTotalTime(Taxi[] taxis) {
-        int time = 0;
-        for (Taxi taxi : taxis) {
-            time = time + taxi.calcTotalTime();
-        }
-        return time;
+        return Arrays.stream(taxis)
+                .mapToInt(Taxi::calcTotalTime)
+                .sum();
     }
 
     /**
