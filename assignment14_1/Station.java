@@ -5,6 +5,7 @@ package assignment14_1;
  * waiting for a taxi.
  *
  * @author Hendrik Werner // s4549775
+ * @author Jasper Haasdijk // s4449754
  * @author Sjaak Smetsers
  */
 public class Station {
@@ -19,12 +20,18 @@ public class Station {
         this.isClosed = false;
     }
 
+    /**
+     * @param nrOfPassengers the number of passengers to enter the station
+     */
     public void enterStation(int nrOfPassengers) {
         nrOfPassengersAtStation += nrOfPassengers;
         totalNrOfPassengers += nrOfPassengers;
         System.out.println("Train with " + nrOfPassengers + " passengers has arrived");
     }
 
+    /**
+     * @return the number of passengers currently waiting at the station
+     */
     public synchronized int getNrOfPassengersWaiting() {
         return nrOfPassengersAtStation;
     }
@@ -41,14 +48,23 @@ public class Station {
         return maxPassengers;
     }
 
+    /**
+     * Close the station.
+     */
     public void close() {
         isClosed = true;
     }
 
+    /**
+     * @return whether the station is closed
+     */
     public boolean isClosed() {
         return isClosed;
     }
 
+    /**
+     * @return the total number of passengers that entered the station
+     */
     public int getTotalNrOfPassengers() {
         return totalNrOfPassengers;
     }
