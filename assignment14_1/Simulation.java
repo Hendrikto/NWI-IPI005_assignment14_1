@@ -1,5 +1,6 @@
 package assignment14_1;
 
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -95,11 +96,9 @@ public class Simulation {
      * @return total time
      */
     private static int calcTotalTime(Taxi[] taxis) {
-        int time = 0;
-        for (Taxi taxi : taxis) {
-            time = time + taxi.calcTotalTime();
-        }
-        return time;
+        return Arrays.stream(taxis)
+                .mapToInt(Taxi::calcTotalTime)
+                .sum();
     }
 
     /**
@@ -110,11 +109,9 @@ public class Simulation {
      * @return total number of passengers
      */
     private static int calcTotalNrOfPassengers(Taxi[] taxis) {
-        int total = 0;
-        for (Taxi taxi : taxis) {
-            total += taxi.getTotalNrOfPassengers();
-        }
-        return total;
+        return Arrays.stream(taxis)
+                .mapToInt(Taxi::getTotalNrOfPassengers)
+                .sum();
     }
 
 }
