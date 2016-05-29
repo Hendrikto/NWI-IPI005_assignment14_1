@@ -5,8 +5,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * A Taxi with a given capacity that can take passengers from a station.
  *
  * @author Hendrik Werner // s4549775
+ * @author Jasper Haasdijk // s4449754
  * @author Sjaak Smetsers
  */
 public class Taxi {
@@ -19,6 +21,12 @@ public class Taxi {
     private int totalNrOfPassengers = 0;
     private int nrOfRides = 0;
 
+    /**
+     * @param nr the id of this taxi
+     * @param maxNumberOfPassengers the capacity
+     * @param transportationTime the transportation time of a trip
+     * @param station the station to take up passengers
+     */
     public Taxi(int nr, int maxNumberOfPassengers, int transportationTime, Station station) {
         this.taxiId = nr;
         this.maxNrOfPassengers = maxNumberOfPassengers;
@@ -57,6 +65,9 @@ public class Taxi {
         return transportationTime * nrOfRides;
     }
 
+    /**
+     * @return the total number of passengers picked up
+     */
     public int getTotalNrOfPassengers() {
         return totalNrOfPassengers;
     }
