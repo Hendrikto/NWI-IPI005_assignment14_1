@@ -83,11 +83,9 @@ public class Simulation {
      * @return total number of passengers
      */
     private static int calcTotalNrOfPassengers(Taxi[] taxis) {
-        int total = 0;
-        for (Taxi taxi : taxis) {
-            total += taxi.getTotalNrOfPassengers();
-        }
-        return total;
+        return Arrays.stream(taxis)
+                .mapToInt(Taxi::getTotalNrOfPassengers)
+                .sum();
     }
 
 }
