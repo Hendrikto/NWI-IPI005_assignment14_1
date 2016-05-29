@@ -7,8 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Simulate a station with trains, taxis, and passengers.
  *
  * @author Hendrik Werner // s4549775
+ * @author Jasper Haasdijk // s4449754
  * @author Sjaak Smetsers
  */
 public class Simulation {
@@ -45,6 +47,9 @@ public class Simulation {
         executor = Executors.newCachedThreadPool();
     }
 
+    /**
+     * Take one simulation step.
+     */
     public void step() {
         if (station.getNrOfPassengersWaiting() > 0) {
             executor.submit(new TaxiRunner(taxis[nextTaxi]));
@@ -64,10 +69,18 @@ public class Simulation {
         }
     }
 
+    /**
+     * Check if the simulation has ended.
+     *
+     * @return if the simulation has ended
+     */
     public boolean ended() {
         return hasEnded;
     }
 
+    /**
+     * Print statistics about the simulation.
+     */
     public void showStatistics() {
         System.out.println("All persons have been transported");
         System.out.println("Total time of this simulation:" + calcTotalTime(taxis));
