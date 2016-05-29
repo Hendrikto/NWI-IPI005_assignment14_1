@@ -32,13 +32,11 @@ public class Taxi {
      * then that number is taken.
      */
     public void takePassengers() {
-        int passengersWaiting = station.getNrOfPassengersWaiting();
-        if (passengersWaiting > 0) {
-            int nrOfPassengers = Math.min(passengersWaiting, maxNrOfPassengers);
-            station.leaveStation(nrOfPassengers);
-            totalNrOfPassengers += nrOfPassengers;
+        int passengers = station.getMaxPassengers(maxNrOfPassengers);
+        if (passengers > 0) {
+            totalNrOfPassengers += passengers;
             nrOfRides++;
-            System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
+            System.out.println("Taxi " + taxiId + " takes " + passengers + " passengers");
         } else {
             System.out.println("Taxi " + taxiId + " takes no passengers");
             try {
